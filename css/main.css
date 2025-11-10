@@ -1,0 +1,354 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0;
+	padding:0;
+	background:url(../images/XmasBG.jpg) no-repeat center center fixed;
+	background-size: 100% 100%;
+        -webkit-background-size: 100% 100%;   
+        -moz-background-size: 100% 100%;   
+        -o-background-size: 100% 100%;
+}
+
+
+#header {
+	width:45%;
+	height:40%;
+        font-family:'Marko One','Chewy', cursive, serif;
+        margin-top:2.2cm;  /*祝词的上边距*/
+        margin-left:18cm;  /*祝词的左边距*/
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000; /*利用四重阴影设置文字描边效果*/
+	text-align:center; /*祝词的对齐方式*/
+}
+
+
+/*自定义一个透明度从0到1的动画，它的名称是fade-in*/
+@keyframes fade-in{  
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+
+@-webkit-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+
+@-ms-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+
+@-o-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+
+@-moz-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+
+
+.h1 {
+	 
+        opacity: 0;       /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 2s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 2s 1;
+        -moz-animation: fade-in 4s ease 2s 1;
+        -o-animation: fade-in 4s ease 2s 1;
+        -ms-animation: fade-in 4s ease 2s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);       /*文字背景色及不透明度设置*/
+        width:fit-content;         /*文字背景色自适应文字长度*/
+        margin:left;               /*带背景色的文字自动居中*/
+	font-family:'Marko One''Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h2 {
+	 
+        opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 4s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 4s 1;
+        -moz-animation: fade-in 4s ease 4s 1;
+        -o-animation: fade-in 4s ease 4s 1;
+        -ms-animation: fade-in 4s ease 4s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One''Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h3 {
+	 
+        opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 6s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 6s 1;
+        -moz-animation: fade-in 4s ease 6s 1;
+        -o-animation: fade-in 4s ease 6s 1;
+        -ms-animation: fade-in 4s ease 6s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One''Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h4 {
+	 
+        opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 8s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 8s 1;
+        -moz-animation: fade-in 4s ease 8s 1;
+        -o-animation: fade-in 4s ease 8s 1;
+        -ms-animation: fade-in 4s ease 8s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One''Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h5 {
+	 
+        opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 10s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 10s 1;
+        -moz-animation: fade-in 4s ease 10s 1;
+        -o-animation: fade-in 4s ease 10s 1;
+        -ms-animation: fade-in 4s ease 10s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One''Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h6 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 12s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 12s 1;
+        -moz-animation: fade-in 4s ease 12s 1;
+        -o-animation: fade-in 4s ease 12s 1;
+        -ms-animation: fade-in 4s ease 12s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One''Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h7 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 14s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 14s 1;
+        -moz-animation: fade-in 4s ease 14s 1;
+        -o-animation: fade-in 4s ease 14s 1;
+        -ms-animation: fade-in 4s ease 14s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One','Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h8 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 16s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 16s 1;
+        -moz-animation: fade-in 4s ease 16s 1;
+        -o-animation: fade-in 4s ease 16s 1;
+        -ms-animation: fade-in 4s ease 16s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One','Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h9 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 18s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 18s 1;
+        -moz-animation: fade-in 4s ease 18s 1;
+        -o-animation: fade-in 4s ease 18s 1;
+        -ms-animation: fade-in 4s ease 18s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One','Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h10 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 20s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 20s 1;
+        -moz-animation: fade-in 4s ease 20s 1;
+        -o-animation: fade-in 4s ease 20s 1;
+        -ms-animation: fade-in 4s ease 20s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:0.7em;
+	color:#38044e;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:left;
+	font-family:'Marko One', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h11 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 22s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 22s 1;
+        -moz-animation: fade-in 4s ease 22s 1;
+        -o-animation: fade-in 4s ease 22s 1;
+        -ms-animation: fade-in 4s ease 22s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:1em;
+	color:#FFD700;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:center;
+	font-family:'Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+
+.h12 {
+	opacity: 0;      /*实先规定文字的状态是不显示的*/
+        animation: fade-in 4s ease 24s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
+        -webkit-animation: fade-in 4s ease 24s 1;
+        -moz-animation: fade-in 4s ease 24s 1;
+        -o-animation: fade-in 4s ease 24s 1;
+        -ms-animation: fade-in 4s ease 24s 1;
+    
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;  
+        -o-animation-fill-mode: forwards; 
+        -ms-animation-fill-mode: forwards;   
+        -moz-animation-fill-mode: forwards;
+
+        font-size:1em;
+	color:#FFD700;
+        background-color:rgba(152,174,254,0.6);
+        width:fit-content;
+        margin:center;
+	font-family:'Chewy', cursive, serif;
+	text-shadow:1px 1px #000;
+}
+/*a
+{
+  color: #FF0;
+  text-decoration: none;
+}
+*/
+
+.clear {
+	 clear:both;	
+}
