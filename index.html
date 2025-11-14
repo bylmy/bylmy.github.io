@@ -73,7 +73,7 @@ body {
 </div>
 
 <script>
-// 优化版本的雪花效果 - 大小不同、速度不同、密度适中
+// 修复版本的雪花效果
 class Snowfall {
     constructor() {
         this.snowflakes = [];
@@ -106,12 +106,13 @@ class Snowfall {
         
         this.container.appendChild(snowflake);
         
-        // 动画
-        this.animateSnowflake(snowflake, duration, sway, opacity);
+        // 修复：传递所有需要的变量到动画函数
+        this.animateSnowflake(snowflake, duration, sway, opacity, size);
     }
     
-    animateSnowflake(snowflake, duration, sway, startOpacity) {
+    animateSnowflake(snowflake, duration, sway, startOpacity, size) {
         const startTime = Date.now();
+        
         const animateFrame = () => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / (duration * 1000), 1);
@@ -137,7 +138,7 @@ class Snowfall {
     }
     
     start() {
-        console.log("启动优化版雪花效果");
+        console.log("启动修复版雪花效果");
         
         // 初始创建一批雪花 - 减少初始数量
         for (let i = 0; i < 15; i++) {
@@ -163,6 +164,7 @@ class Snowfall {
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         window.snowfall = new Snowfall();
+        console.log("雪花效果已启动");
     }, 100);
 });
 
