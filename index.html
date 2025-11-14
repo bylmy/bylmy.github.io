@@ -12,10 +12,27 @@
 <!-- CSS 文件放在 css/ 文件夹 -->
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 
-<!-- 使用兼容的 jQuery 版本 -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<!-- snowfall CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-snowfall/1.7.4/snowfall.jquery.min.js"></script>
+<!-- 只保留 jQuery 用于音乐控制 -->
+<script type="text/javascript" src="js/jquery-latest.min.js"></script>
+
+<style>
+/* 雪花样式 */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+}
+
+/* 确保内容在雪花之上 */
+#header {
+    position: relative;
+    z-index: 10000;
+}
+</style>
 	
 </head>
 
@@ -47,22 +64,70 @@
  <div class="h12">James</div>
 </div>
 
-<script type='text/javascript'> 
-$(document).ready(function(){
-    console.log("初始化雪花效果");
+<script>
+// 原生 JavaScript 雪花效果
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.innerHTML = '❄';
+    snowflake.classList.add('snowflake');
     
-    // 雪花效果
-    $(document).snowfall({
-        deviceorientation : false, // 先关闭这个选项测试
-        round : true, 
-        minSize: 1, 
-        maxSize: 8,  
-        flakeCount : 150
+    // 随机大小
+    const size = Math.random() * 10 + 10;
+    snowflake.style.fontSize = size + 'px';
+    
+    // 随机起始位置
+    snowflake.style.left = Math.random() * 100 + 'vw';
+    
+    // 随机透明度
+    snowflake.style.opacity = Math.random() * 0.6 + 0.3;
+    
+    // 随机动画时长
+    const duration = Math.random() * 5 + 5;
+    
+    // 随机摇摆幅度
+    const sway = (Math.random() - 0.5) * 100;
+    
+    document.body.appendChild(snowflake);
+    
+    // 动画
+    const animation = snowflake.animate([
+        { transform: `translate(0, 0)`, opacity: snowflake.style.opacity },
+        { transform: `translate(${sway}px, 100vh)`, opacity: 0 }
+    ], {
+        duration: duration * 1000,
+        easing: 'linear'
     });
     
-    console.log("雪花效果初始化完成");
+    // 动画结束后移除元素
+    animation.onfinish = () => {
+        snowflake.remove();
+    };
+}
+
+// 创建多个雪花
+function startSnowfall() {
+    // 先清除可能存在的旧雪花
+    const oldSnowflakes = document.querySelectorAll('.snowflake');
+    oldSnowflakes.forEach(snowflake => snowflake.remove());
     
-    // 音乐控制
+    // 创建新雪花
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            createSnowflake();
+            // 持续创建新雪花
+            setInterval(createSnowflake, 500);
+        }, i * 200);
+    }
+}
+
+// 页面加载完成后启动雪花
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("启动原生雪花效果");
+    startSnowfall();
+});
+
+// 音乐控制（使用 jQuery）
+$(document).ready(function(){
     $("#audio_btn").click(function(){
         var music = document.getElementById("music");
         if(music.paused){
