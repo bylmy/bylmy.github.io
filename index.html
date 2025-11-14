@@ -13,18 +13,18 @@
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 
 <!-- 只保留 jQuery 用于音乐控制 -->
-<script type="text/javascript" src="js/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-/* 雪花样式 */
+/* 雪花样式 - 使用纯CSS */
 .snowflake {
     position: fixed;
     top: -10px;
     color: white;
-    font-size: 1em;
     pointer-events: none;
     user-select: none;
     z-index: 9999;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 
 /* 确保内容在雪花之上 */
@@ -32,18 +32,26 @@
     position: relative;
     z-index: 10000;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #0a2e5a; /* 添加背景色确保雪花可见 */
+}
 </style>
 	
 </head>
 
 <body>
 <!-- 音乐播放 -->
-<audio id="music" src="https://ed.podomatic.net/e/podcast5754733238.podomatic.com/2024-12-13T12_13_20-08_00.mp3" autoplay="autoplay" loop>
+<audio id="music" src="https://ed.podomatic.net/e/podcast5754733238.podomatic.com/2024-12-13T12_13_20-08_00.mp3" loop>
   Your browser does not support the audio tag.
 </audio>
 
 <!-- 播放按钮 -->
-<a id="audio_btn">
+<a id="audio_btn" style="cursor: pointer;">
   <img style="margin: 15px 0px 0px 10px;" src="images/play.png" width="75" height="75" id="music_btn" border="0">
 </a>
 
@@ -65,79 +73,129 @@
 </div>
 
 <script>
-// 原生 JavaScript 雪花效果
-function createSnowflake() {
-    const snowflake = document.createElement('div');
-    snowflake.innerHTML = '❄';
-    snowflake.classList.add('snowflake');
+// CSP安全的纯JavaScript雪花效果 - 不使用eval或new Function
+class Snowfall {
+    constructor() {
+        this.snowflakes = [];
+        this.container = document.body;
+        this.start();
+    }
     
-    // 随机大小
-    const size = Math.random() * 10 + 10;
-    snowflake.style.fontSize = size + 'px';
+    createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.innerHTML = '❄';
+        
+        // 随机属性
+        const size = Math.random() * 15 + 10;
+        const left = Math.random() * 100;
+        const opacity = Math.random() * 0.7 + 0.3;
+        const duration = Math.random() * 10 + 10;
+        const sway = (Math.random() - 0.5) * 100;
+        
+        // 应用样式
+        snowflake.style.fontSize = size + 'px';
+        snowflake.style.left = left + 'vw';
+        snowflake.style.opacity = opacity;
+        snowflake.style.transform = 'translateX(0px) translateY(0px)';
+        
+        this.container.appendChild(snowflake);
+        
+        // 使用CSS动画而不是JavaScript动画
+        this.animateSnowflake(snowflake, duration, sway);
+    }
     
-    // 随机起始位置
-    snowflake.style.left = Math.random() * 100 + 'vw';
+    animateSnowflake(snowflake, duration, sway) {
+        const startTime = Date.now();
+        const animateFrame = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / (duration * 1000), 1);
+            
+            if (progress < 1) {
+                // 使用三角函数创建自然摆动
+                const currentSway = sway * Math.sin(progress * Math.PI * 3);
+                const currentTop = progress * (window.innerHeight + 100);
+                
+                snowflake.style.transform = `translateX(${currentSway}px) translateY(${currentTop}px)`;
+                snowflake.style.opacity = opacity * (1 - progress * 0.5);
+                
+                // 使用requestAnimationFrame而不是setInterval
+                requestAnimationFrame(animateFrame);
+            } else {
+                // 动画结束，移除雪花
+                if (snowflake.parentNode) {
+                    snowflake.parentNode.removeChild(snowflake);
+                }
+            }
+        };
+        
+        // 启动动画
+        requestAnimationFrame(animateFrame);
+    }
     
-    // 随机透明度
-    snowflake.style.opacity = Math.random() * 0.6 + 0.3;
+    start() {
+        console.log("启动CSP安全雪花效果");
+        
+        // 初始创建一批雪花
+        for (let i = 0; i < 25; i++) {
+            setTimeout(() => {
+                this.createSnowflake();
+            }, i * 400);
+        }
+        
+        // 持续创建新雪花 - 使用具名函数而不是字符串
+        this.snowInterval = setInterval(() => {
+            this.createSnowflake();
+        }, 300);
+    }
     
-    // 随机动画时长
-    const duration = Math.random() * 5 + 5;
-    
-    // 随机摇摆幅度
-    const sway = (Math.random() - 0.5) * 100;
-    
-    document.body.appendChild(snowflake);
-    
-    // 动画
-    const animation = snowflake.animate([
-        { transform: `translate(0, 0)`, opacity: snowflake.style.opacity },
-        { transform: `translate(${sway}px, 100vh)`, opacity: 0 }
-    ], {
-        duration: duration * 1000,
-        easing: 'linear'
-    });
-    
-    // 动画结束后移除元素
-    animation.onfinish = () => {
-        snowflake.remove();
-    };
-}
-
-// 创建多个雪花
-function startSnowfall() {
-    // 先清除可能存在的旧雪花
-    const oldSnowflakes = document.querySelectorAll('.snowflake');
-    oldSnowflakes.forEach(snowflake => snowflake.remove());
-    
-    // 创建新雪花
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            createSnowflake();
-            // 持续创建新雪花
-            setInterval(createSnowflake, 500);
-        }, i * 200);
+    stop() {
+        if (this.snowInterval) {
+            clearInterval(this.snowInterval);
+        }
     }
 }
 
-// 页面加载完成后启动雪花
+// 页面加载后启动雪花
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("启动原生雪花效果");
-    startSnowfall();
+    // 等待一点时间确保页面完全加载
+    setTimeout(() => {
+        window.snowfall = new Snowfall();
+    }, 100);
 });
 
-// 音乐控制（使用 jQuery）
+// jQuery 音乐控制 - CSP安全版本
 $(document).ready(function(){
+    console.log("jQuery加载成功，设置音乐控制");
+    
+    // 移除autoplay以避免CSP问题
+    var music = document.getElementById("music");
+    music.removeAttribute('autoplay');
+    
     $("#audio_btn").click(function(){
         var music = document.getElementById("music");
+        var music_btn = document.getElementById("music_btn");
+        
         if(music.paused){
-            music.play();
-            $("#music_btn").attr("src","images/play.png");
-        }else{
+            music.play().then(() => {
+                music_btn.src = "images/play.png";
+                console.log("音乐播放");
+            }).catch(error => {
+                console.log("播放失败:", error);
+            });
+        } else {
             music.pause();
-            $("#music_btn").attr("src","images/pause.png");
+            music_btn.src = "images/pause.png";
+            console.log("音乐暂停");
         }
     });
+});
+
+// 页面卸载时清理
+window.addEventListener('beforeunload', function() {
+    if (window.snowfall) {
+        window.snowfall.stop();
+    }
 });
 </script>
 
