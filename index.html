@@ -1,74 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRIPLEWELL-XMAS2024</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TRIPLEWELL-XMAS2024</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi|Chewy|Lobster|Marko+One" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Baloo+Thambi|Chewy|Lobster|Marko+One" rel="stylesheet">
 
-  <!-- CSS -->
-  <link href="css/main.css" rel="stylesheet" type="text/css" />
+<!-- CSS 文件放在 css/ 文件夹 -->
+<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-  <!-- JS -->
-  <script src="js/jquery-latest.min.js"></script>
-  <script src="js/snowfall.jquery.js"></script>
+<!-- JS 文件放在 js/ 文件夹 -->
+<script type="text/javascript" src="js/jquery-latest.min.js"></script>
+<script src="js/snowfall.jquery.js"></script>
+	
 </head>
 
 <body>
-  <!-- 音乐 -->
-  <audio id="music" src="https://ed.podomatic.net/e/podcast5754733238.podomatic.com/2024-12-13T12_13_20-08_00.mp3" loop>
-    Your browser does not support the audio tag.
-  </audio>
+<!-- 音乐播放 -->
+<audio id="music" src="https://ed.podomatic.net/e/podcast5754733238.podomatic.com/2024-12-13T12_13_20-08_00.mp3" autoplay="autoplay" loop>
+  Your browser does not support the audio tag.
+</audio>
 
-  <!-- 播放按钮 -->
-  <a id="audio_btn">
-    <img style="margin: 15px 0 0 10px;" src="images/play.png" width="75" height="75" id="music_btn" border="0">
-  </a>
+<!-- 播放按钮，图片放在 images/ 文件夹 -->
+<a id="audio_btn">
+  <img style="margin: 15px 0px 0px 10px;" src="images/play.png" width="75" height="75" id="music_btn" border="0">
+</a>
 
-  <!-- 内容 -->
-  <div id="header">
-    <div class="h1">On behalf of Lincoln, myself, and the entire team at Triplewell:</div>
-    <div class="h2">Thank you for being such an important part of our lives,</div>
-    <div class="h3">as it is no coincidence that you have all touched all of us;</div>
-    <div class="h4">as Customers, Suppliers, Stakeholders, and most importantly, as Friends.</div>
-    <div class="h5">These are the relationships that we truly value,</div>
-    <div class="h6">please know that you are incredibly special to us.</div>
-    <div class="h7"></div>
-    <br />
-    <div class="h8">We appreciate you more than you will ever know.</div>
-    <div class="h9">Wishing you and your family a very Merry Christmas;</div>
-    <div class="h10">and prosperity, healthy, and happiness throughout the New Year…and beyond!</div>
-    <br />
-    <div class="h11">Sincerely yours,</div>
-    <div class="h12">James</div>
-  </div>
+<div id="header">
+ <div class="h1">On behalf of Lincoln, myself, and the entire team at Triplewell:</div>
+ <div class="h2">Thank you for being such an important part of our lives,</div>
+ <div class="h3">as it is no coincidence that you have all touched all of us;</div>
+ <div class="h4">as Customers, Suppliers, Stakeholders, and most importantly, as Friends.</div>
+ <div class="h5">These are the relationships that we truly value,</div>
+ <div class="h6">please know that you are incredibly special to us.</div>
+ <div class="h7"></div>
+       <br />
+ <div class="h8">We appreciate you more than you will ever know.</div>
+ <div class="h9">Wishing you and your family a very Merry Christmas;</div>
+ <div class="h10">and prosperity, healthy, and happiness throughout the New Year…and beyond!</div>
+       <br />
+ <div class="h11">Sincerely yours,</div>
+ <div class="h12">James</div>
+</div>
 
-  <script>
+<script type='text/javascript'> 
+$(document).ready(function(){
     // 雪花效果
-    $(document).ready(function(){
-      $(document).snowfall({
-        deviceorientation: true,
-        round: true,
-        minSize: 1,
-        maxSize: 8,
-        flakeCount: 250
-      });
+    $(document).snowfall({
+        deviceorientation : true, 
+        round : true, 
+        minSize: 1, 
+        maxSize: 8,  
+        flakeCount : 250
     });
-
+    
     // 音乐控制
     $("#audio_btn").click(function(){
-      var music = document.getElementById("music");
-      var btn = document.getElementById("music_btn");
-      if (music.paused) {
-        music.play();
-        btn.src = "images/play.png";
-      } else {
-        music.pause();
-        btn.src = "images/pause.png";
-      }
+        var music = document.getElementById("music");
+        if(music.paused){
+            music.play();
+            $("#music_btn").attr("src","images/play.png");
+        }else{
+            music.pause();
+            $("#music_btn").attr("src","images/pause.png");
+        }
     });
-  </script>
+});
+</script>
+
 </body>
 </html>
