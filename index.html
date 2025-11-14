@@ -12,9 +12,10 @@
 <!-- CSS 文件放在 css/ 文件夹 -->
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 
-<!-- JS 文件放在 js/ 文件夹 -->
-<script type="text/javascript" src="js/jquery-latest.min.js"></script>
-<script src="js/snowfall.jquery.js"></script>
+<!-- 使用兼容的 jQuery 版本 -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- snowfall CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-snowfall/1.7.4/snowfall.jquery.min.js"></script>
 	
 </head>
 
@@ -24,7 +25,7 @@
   Your browser does not support the audio tag.
 </audio>
 
-<!-- 播放按钮，图片放在 images/ 文件夹 -->
+<!-- 播放按钮 -->
 <a id="audio_btn">
   <img style="margin: 15px 0px 0px 10px;" src="images/play.png" width="75" height="75" id="music_btn" border="0">
 </a>
@@ -48,14 +49,18 @@
 
 <script type='text/javascript'> 
 $(document).ready(function(){
+    console.log("初始化雪花效果");
+    
     // 雪花效果
     $(document).snowfall({
-        deviceorientation : true, 
+        deviceorientation : false, // 先关闭这个选项测试
         round : true, 
         minSize: 1, 
         maxSize: 8,  
-        flakeCount : 250
+        flakeCount : 150
     });
+    
+    console.log("雪花效果初始化完成");
     
     // 音乐控制
     $("#audio_btn").click(function(){
