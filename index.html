@@ -91,12 +91,12 @@ class Snowfall {
         const size = Math.random() * 16 + 8;
         
         // 根据大小决定下落速度 - 大的雪花下落快，小的雪花下落慢
-        const baseDuration = 14; // 基础下落时间
-        const duration = baseDuration - (size / 24) * 6; // 大小影响速度
+        const baseDuration = 12; // 基础下落时间
+        const duration = baseDuration - (size / 24) * 10; // 大小影响速度
         
         // 其他随机属性
         const left = Math.random() * 100;
-        const opacity = Math.random() * 0.5 + 0.8;
+        const opacity = Math.random() * 0.3 + 1.0;
         const sway = (Math.random() - 0.5) * 80; // 减少摇摆幅度
         
         // 应用样式
@@ -142,7 +142,7 @@ class Snowfall {
         console.log("启动修复版雪花效果");
         
         // 初始创建一批雪花 - 减少初始数量
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 30; i++) {
             setTimeout(() => {
                 this.createSnowflake();
             }, i * 800); // 增加间隔时间
@@ -151,7 +151,7 @@ class Snowfall {
         // 持续创建新雪花 - 减少创建频率
         this.snowInterval = setInterval(() => {
             this.createSnowflake();
-        }, 400); // 从300ms增加到600ms，减少密度
+        }, 300); // 从300ms增加到600ms，减少密度
     }
     
     stop() {
